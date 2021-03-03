@@ -1,36 +1,47 @@
-
 /********************************/
-/* Program Name:                */
-/* Author:                      */
-/* Date:                        */
+/* Program Name: ascii2bin      */
+/* Author:Kagen Christoph       */
+/* Date: 3/1/2021              */
 /********************************/
 /* Description:                 */
 /* Validation Checks:           */
 /* Enhancements:                */
 /********************************/
-
-#include "stdio.h"
-#include "stdlib.h"
+#include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 
-#define byte char
+#define byte unsigned char
 
-int main (int argc, char * argv[], char ** envp) {
 
-  int ascii_value;
-  int offset = 48;
-  int number = 0;
-  
-    int retval = read(0, &ascii_value, 1);
-    while (retval == 1)
-	{
-        int digit = ascii_value - offset;
-        number = (number << 1) + digit;  
+int main (int argc, char * argv[], char ** envp)
+{
+        byte ascii_value = 0;
+        byte offset = 0x30; //48
+        byte digit = 0;
+        unsigned int number = 0;
+        int retval;
+
         retval = read(0, &ascii_value, 1);
-	if (ascii_value == 10 || ascii_value == 13) 
-		{break;}
+        
+            while (retval == 1)
+            {
+				printf(ascii_value);
+                if(ascii_value != 0x30 && ascii_value != 0x31) // needs to be within range 48-49
+                {                                                          
+                   break;
+                }
+                else
+                {
+					digit = ascii_value - offset;
+                    number = (number << 1) + digit;         
+                    retval = read(0, &ascii_value, 1);  
+                }
+            }        
+    if(ascii_value == 0x30 || ascii_value == 0x31 || ascii_value == 0x0a) // check for LF
+    {
+        printf("%u\n", number);
+        return 0;
     }
-    printf("%u\n", number);
-    return 0;
-
+    return 1;
 }
