@@ -27,13 +27,13 @@ int main (int argc, char * argv[], char ** envp)
             while (retval == 1)
             {
 				printf(ascii_value);
-                if(ascii_value != 0x30 && ascii_value != 0x31) // needs to be within range 48-49
+                if(ascii_value != 0x30 && ascii_value != 0x31) // needs to be within range 48-49 
                 {                                                          
                    break;
                 }
                 else
                 {
-					digit = ascii_value - offset;
+		    digit = ascii_value - offset;
                     number = (number << 1) + digit;         
                     retval = read(0, &ascii_value, 1);  
                 }
