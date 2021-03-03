@@ -16,7 +16,6 @@
 
 int main (int argc, char * argv[], char ** envp) {
 
-  int retval;
   int ascii_value;
   int retval;
   int offset = 48;
