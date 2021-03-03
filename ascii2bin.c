@@ -32,7 +32,7 @@ int main (int argc, char * argv[], char ** envp) {
       return 1;
     }
 
-    if (ascii_value != '0' && ascii_value != '1') {
+    if (ascii_value != 0 && ascii_value != 1) {
       fprintf(stderr, "%s", "Error, invalid input!");
       return 1;
     }
