@@ -18,12 +18,11 @@
 int main (int argc, char * argv[], char ** envp) {
 
   int ascii_value;
-  int retval;
   int offset = 48;
   int number = 0;
   int count = 0; 
   
-    retval = read(0, &ascii_value, 1);
+    int retval = read(0, &ascii_value, 1);
     while (retval == 1)
 	{
 		count++;
