@@ -1,37 +1,49 @@
-#include <stdio.h>
-#include <stdlib.h>
+
+/********************************/
+/* Program Name:                */
+/* Author:                      */
+/* Date:                        */
+/********************************/
+/* Description:                 */
+/* Validation Checks:           */
+/* Enhancements:                */
+/********************************/
+
+#include "stdio.h"
+#include "stdlib.h"
 #include <unistd.h>
 
-int main (int argc, char * argv[], char ** envp)
-{
-        char ascii_value = 0;
-        char offset = 0x30;                  //48
-        char digit = 0;
-        unsigned int number = 0;
-        int retval;
+#define byte char
 
-        retval = read(0, &ascii_value, 1);
-        
-            while (retval == 1)
-            {
-                if(ascii_value == 0x30 || ascii_value == 0x31) 
-                {                                                          
-                    digit = ascii_value - offset;
-                    number = (number << 1) + digit;         
-                    retval = read(0, &ascii_value, 1);  
-                }
-                else
-                {
-                        break;
-                }
-            }        
-    if(ascii_value == 0x30 || ascii_value == 0x31 || ascii_value == 0x0a)
-    {
-        printf("%u\n", number);
-        return 0;
+int main (int argc, char * argv[], char ** envp) {
+
+  int ascii_value;
+  int retval;
+  int offset = 48;
+  int number = 0;
+  int count = 0; 
+  
+    retval = read(0, &ascii_value, 1);
+    while (retval == 1)
+	{
+		count++;
+
+    if (count > 32) {
+      fprintf(stderr, "%s", "Error, number exceeds 2^32!");
+      return 1;
     }
-    return 1;
 
-
+    if (ascii_value != '0' && ascii_value != '1') {
+      fprintf(stderr, "%s", "Error, invalid input!");
+      return 1;
+    }
+        int digit = ascii_value - offset;
+        number = (number << 1) + digit;  
+        retval = read(0, &ascii_value, 1);
+	if (ascii_value == 10 || ascii_value == 13) 
+		{break;}
+    }
+    printf("%u\n", number);
+    return 0;
 
 }
