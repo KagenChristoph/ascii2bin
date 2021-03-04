@@ -33,6 +33,7 @@ int main (int argc, char * argv[], char ** envp)
             	fprintf(stderr,"%s","The calculated number exceeds 2^32.");
 		return 1;
         	}
+		    
                 if(ascii_value != 48 && ascii_value != 49) // needs to be within range 48-49 
                 {                                                          
                    break;
@@ -52,7 +53,7 @@ int main (int argc, char * argv[], char ** envp)
     }
     else
     {
-	    fprintf(stderr,"%s","A non binary input has been detected");
+	    fprintf(stderr,"%s","A non binary input has been detected\n");
 	    return 1;
     }
     
