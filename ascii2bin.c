@@ -28,7 +28,7 @@ int main (int argc, char * argv[], char ** envp)
         
             while (retval == 1)
             {
-		if(count > max_count)                                           /  
+		if(count > max_count)                                         
         	{                                                               
             	fprintf(stderr,"%s","The calculated number exceeds 2^32.");
 		return 1;
