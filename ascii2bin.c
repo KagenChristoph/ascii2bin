@@ -26,7 +26,7 @@ int main (int argc, char * argv[], char ** envp)
         
             while (retval == 1)
             {
-				printf("%u"ascii_value);
+				printf("%c"ascii_value);
                 if(ascii_value != 0x30 && ascii_value != 0x31) // needs to be within range 48-49 
                 {                                                          
                    break;
