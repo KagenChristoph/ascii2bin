@@ -17,7 +17,7 @@
 int main (int argc, char * argv[], char ** envp)
 {
         byte ascii_value = 0;
-        byte offset = 0x30; //48
+        byte offset = 48; //48
         byte digit = 0;
         unsigned int number = 0;
         int retval;
