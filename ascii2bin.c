@@ -46,7 +46,7 @@ int main (int argc, char * argv[], char ** envp)
                     retval = read(0, &ascii_value, 1);  
                 }
             }        
-    if(ascii_value == 48 || ascii_value == 49 || ascii_value == 10) // check for LF
+    if(ascii_value == 10) // check for LF
     {
         printf("%u\n", number);
         return 0;
